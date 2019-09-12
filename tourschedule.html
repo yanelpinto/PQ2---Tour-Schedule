@@ -8,10 +8,8 @@
 </head>
 <body>
 <script language="javascript">
-
-
-
-function UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, with)
+//--------------------------------------------------
+function UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat)
 {
 this.showID = showID;
 this.venue = venue;
@@ -24,9 +22,8 @@ this.time = time;
 this.price = price;
 this.phone = phone;
 this.site = site;
-this.with = with;
+this.feat = feat;
 }
-
 //showID Method Setup
 UserEntry.prototype.getshowID = function(showID)
 {
@@ -36,7 +33,6 @@ UserEntry.prototype.setshowID = function(showID)
 {
 this.showID = showID;
 }
-
 //venue Method Setup
 UserEntry.prototype.getvenue = function(venue)
 {
@@ -46,7 +42,6 @@ UserEntry.prototype.setvenue = function(venue)
 {
 this.venue = venue;
 }
-
 //add Method Setup
 UserEntry.prototype.getadd = function(add)
 {
@@ -56,7 +51,6 @@ UserEntry.prototype.setadd = function(add)
 {
 this.add = add;
 }
-
 //city Method Setup
 UserEntry.prototype.getcity = function(city)
 {
@@ -66,7 +60,6 @@ UserEntry.prototype.setcity = function(city)
 {
 this.city = city;
 }
-
 //state Method Setup
 UserEntry.prototype.getstate = function(state)
 {
@@ -76,7 +69,6 @@ UserEntry.prototype.setstate = function(state)
 {
 this.state = state;
 }
-
 //zip Method Setup
 UserEntry.prototype.getzip = function(zip)
 {
@@ -86,7 +78,6 @@ UserEntry.prototype.setzip = function(zip)
 {
 this.zip = zip;
 }
-
 //date Method Setup
 UserEntry.prototype.getdate = function(date)
 {
@@ -96,7 +87,6 @@ UserEntry.prototype.setdate = function(date)
 {
 this.date = date;
 }
-
 //time Method Setup
 UserEntry.prototype.gettime = function(time)
 {
@@ -106,7 +96,6 @@ UserEntry.prototype.settime = function(time)
 {
 this.time = time;
 }
-
 //price Method Setup
 UserEntry.prototype.getprice = function(price)
 {
@@ -116,7 +105,6 @@ UserEntry.prototype.setprice = function(price)
 {
 this.price = price;
 }
-
 //phone Method Setup
 UserEntry.prototype.getphone = function(phone)
 {
@@ -126,7 +114,6 @@ UserEntry.prototype.setphone = function(phone)
 {
 this.phone = phone;
 }
-
 //site Method Setup
 UserEntry.prototype.getsite = function(site)
 {
@@ -136,20 +123,17 @@ UserEntry.prototype.setsite = function(site)
 {
 this.site = site;
 }
-
-//with Method Setup
-UserEntry.prototype.getwith = function(with)
+//feat Method Setup
+UserEntry.prototype.getfeat = function(feat)
 {
-return this.with;
+return this.feat;
 }
-UserEntry.prototype.setwith = function(with)
+UserEntry.prototype.setfeat = function(feat)
 {
-this.with = with;
+this.feat = feat;
 }
-
-var show1 = new UserEntry(
-
-
+//--------------------------------------------------
+var show1 = new UserEntry("showID", "venue", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
 //Object - Tour - Array of all events.
 //Object definition
 function tour()
@@ -157,15 +141,19 @@ function tour()
 this.shows = new Array();
 }
 //Method definition - Add show from UserEntry object
-cinema.prototype.addshow = function(showID, venue, add, city, state, zip, date, time, price, phone, site, with);
+tour.prototype.addshow = function(showID, venue, add, city, state, zip, date, time, price, phone, site, feat)
 {
-this.shows[showID] = new UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, with);
+this.shows[showID] = new UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat);
 }
-document.write("Hello World 2")
+tour.prototype.getshow = function(showID)
+{
+return this.shows[showID].getvenue();
+}
+var tours = new tour();
+tours.addshow(0, "venue", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
+tours.addshow(1, "venue2", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
+document.write(tours.getshow(1));
+
 </script>
-
-
-
-
 </body>
 </html>
