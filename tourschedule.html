@@ -145,14 +145,44 @@ tour.prototype.addshow = function(showID, venue, add, city, state, zip, date, ti
 {
 this.shows[showID] = new UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat);
 }
+//Method definition - To output single event data to screen.
 tour.prototype.getshow = function(showID)
 {
-return this.shows[showID].getvenue();
+//Error Handling for non-existant value
+if (typeof this.shows[showID] !== 'undefined')
+{
+var show;
+show = this.shows[showID].getshowID() + "<br />";
+show += this.shows[showID].getvenue() + "<br />";
+show += this.shows[showID].getadd() + "<br />";
+show += this.shows[showID].getcity() + "<br />";
+show += this.shows[showID].getstate() + "<br />";
+show += this.shows[showID].getzip() + "<br />";
+show += this.shows[showID].getdate() + "<br />";
+show += this.shows[showID].gettime() + "<br />";
+show += this.shows[showID].getprice() + "<br />";
+show += this.shows[showID].getphone() + "<br />";
+show += this.shows[showID].getsite() + "<br />";
+show += this.shows[showID].getfeat() + "<br />";
 }
+else
+{
+show = "Invalid show."
+}
+return show;
+}
+//End Object / Method Setup
+
+//Begin User Interface
+
+//Sample Data - Added using created objects
 var tours = new tour();
-tours.addshow(0, "venue", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
+tours.addshow(0, "Rocketown", "100 Demonbreun Street", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "N/A", "Pearl Jam");
 tours.addshow(1, "venue2", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
-document.write(tours.getshow(1));
+	
+//Example using created objects/method
+document.write(tours.getshow(prompt("Which event?","")));
+
 
 </script>
 </body>
