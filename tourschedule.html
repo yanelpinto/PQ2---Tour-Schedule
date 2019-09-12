@@ -152,18 +152,58 @@ tour.prototype.getshow = function(showID)
 if (typeof this.shows[showID] !== 'undefined')
 {
 var show;
-show = this.shows[showID].getshowID() + "<br />";
+show = "<table border = 1>";
+	
+show += "<tr><td>";
+show += this.shows[showID].getshowID() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getvenue() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getadd() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getcity() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getstate() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getzip() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getdate() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].gettime() + "<br />";
+show += "</td>";
+
+show += "<td>";
 show += this.shows[showID].getprice() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getphone() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getsite() + "<br />";
+show += "</td>";
+	
+show += "<td>";
 show += this.shows[showID].getfeat() + "<br />";
+show += "</td>";
+show += "</tr>";
+
+show += "</table>";
 }
 else
 {
