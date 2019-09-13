@@ -211,9 +211,22 @@ return c;
 //Delete tour stop
 tour.prototype.deleteshow = function(showID)
 {
-delete tours.shows[showID];
+delete this.shows[showID];
 alert("Tour ID" + showID + " has been deleted.");
 }
+
+tour.prototype.sortshows = function()
+{
+	var sorted = new tour();
+	
+	sorted = this.shows.sort(function(a,b)
+	{
+	return a.date - b.date;
+	});
+	alert(sorted[0][0]);
+return sorted
+}
+
 //End Object / Method Setup
 //________________________________________________________________________________________________________
 </script>
@@ -224,8 +237,8 @@ alert("Tour ID" + showID + " has been deleted.");
 //Begin User Interface
 //Sample Data - Added using created objects
 var tours = new tour();
-tours.addshow(1, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
-tours.addshow(2, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "10/10/19", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
+tours.addshow(1, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "2019-11-15", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
+tours.addshow(2, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "2019-10-10", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
 
 //Prompt Array
 var prompts = new Array();
@@ -247,7 +260,7 @@ var cont = 1;  // Exit Flag
 	
 while (cont == 1)
 {
-decision = prompt("Welcome to Tour Manager.  What would you like to do? \n 1. New Tour Stop \n 2. Delete Tour Stop \n 3. View Tour Schedule","");
+decision = prompt("Welcome to Tour Manager.  What would you like to do? \n 1. New Tour Stop \n 2. Delete Tour Stop \n 3. View Tour Schedule \n 4. Exit","");
 switch (decision)
 {
 	case "1":
@@ -279,6 +292,11 @@ tours.addshow(showID,response[0][0],response[0][1],response[0][2],response[0][3]
 	case "3":
 //Example using created objects/method
 //document.write(tours.getshow(prompt("Which event?","")));
+		const sorted = tours.shows.sort(function(a,b)
+	{
+	return a.date - b.date;
+	});
+		console.log(sorted);
 		document.write(tours.getshows());
 		cont = 0;
 		break;
