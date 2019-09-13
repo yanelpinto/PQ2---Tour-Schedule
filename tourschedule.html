@@ -25,7 +25,7 @@ this.site = site;
 this.feat = feat;
 }
 //showID Method Setup
-UserEntry.prototype.getshowID = function(showID)
+UserEntry.prototype.getshowID = function()
 {
 return this.showID;
 }
@@ -34,7 +34,7 @@ UserEntry.prototype.setshowID = function(showID)
 this.showID = showID;
 }
 //venue Method Setup
-UserEntry.prototype.getvenue = function(venue)
+UserEntry.prototype.getvenue = function()
 {
 return this.venue;
 }
@@ -43,7 +43,7 @@ UserEntry.prototype.setvenue = function(venue)
 this.venue = venue;
 }
 //add Method Setup
-UserEntry.prototype.getadd = function(add)
+UserEntry.prototype.getadd = function()
 {
 return this.add;
 }
@@ -52,7 +52,7 @@ UserEntry.prototype.setadd = function(add)
 this.add = add;
 }
 //city Method Setup
-UserEntry.prototype.getcity = function(city)
+UserEntry.prototype.getcity = function()
 {
 return this.city;
 }
@@ -61,7 +61,7 @@ UserEntry.prototype.setcity = function(city)
 this.city = city;
 }
 //state Method Setup
-UserEntry.prototype.getstate = function(state)
+UserEntry.prototype.getstate = function()
 {
 return this.state;
 }
@@ -70,7 +70,7 @@ UserEntry.prototype.setstate = function(state)
 this.state = state;
 }
 //zip Method Setup
-UserEntry.prototype.getzip = function(zip)
+UserEntry.prototype.getzip = function()
 {
 return this.zip;
 }
@@ -79,7 +79,7 @@ UserEntry.prototype.setzip = function(zip)
 this.zip = zip;
 }
 //date Method Setup
-UserEntry.prototype.getdate = function(date)
+UserEntry.prototype.getdate = function()
 {
 return this.date;
 }
@@ -88,7 +88,7 @@ UserEntry.prototype.setdate = function(date)
 this.date = date;
 }
 //time Method Setup
-UserEntry.prototype.gettime = function(time)
+UserEntry.prototype.gettime = function()
 {
 return this.time;
 }
@@ -97,7 +97,7 @@ UserEntry.prototype.settime = function(time)
 this.time = time;
 }
 //price Method Setup
-UserEntry.prototype.getprice = function(price)
+UserEntry.prototype.getprice = function()
 {
 return this.price;
 }
@@ -106,7 +106,7 @@ UserEntry.prototype.setprice = function(price)
 this.price = price;
 }
 //phone Method Setup
-UserEntry.prototype.getphone = function(phone)
+UserEntry.prototype.getphone = function()
 {
 return this.phone;
 }
@@ -115,7 +115,7 @@ UserEntry.prototype.setphone = function(phone)
 this.phone = phone;
 }
 //site Method Setup
-UserEntry.prototype.getsite = function(site)
+UserEntry.prototype.getsite = function()
 {
 return this.site;
 }
@@ -124,7 +124,7 @@ UserEntry.prototype.setsite = function(site)
 this.site = site;
 }
 //feat Method Setup
-UserEntry.prototype.getfeat = function(feat)
+UserEntry.prototype.getfeat = function()
 {
 return this.feat;
 }
@@ -152,58 +152,20 @@ tour.prototype.getshow = function(showID)
 if (typeof this.shows[showID] !== 'undefined')
 {
 var show;
-show = "<table border = 1>";
-	
-show += "<tr><td>";
-show += this.shows[showID].getshowID() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getvenue() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getadd() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getcity() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getstate() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getzip() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getdate() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].gettime() + "<br />";
-show += "</td>";
-
-show += "<td>";
-show += this.shows[showID].getprice() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getphone() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getsite() + "<br />";
-show += "</td>";
-	
-show += "<td>";
-show += this.shows[showID].getfeat() + "<br />";
-show += "</td>";
-show += "</tr>";
-
-show += "</table>";
+show = "<h3> Show #" + this.shows[showID].getshowID() + "<h3>";
+show += "<table border = 1>";
+show += "<tr><td>" + "Venue: " + "</td><td>" + this.shows[showID].getvenue() + "</td></tr>";
+show +="<tr><td>" + "Address: " + "</td><td>" + this.shows[showID].getadd() + "</td></tr>";
+show +="<tr><td>" + "City: " + "</td><td>" + this.shows[showID].getcity() + "</td></tr>";
+show +="<tr><td>" + "State: " + "</td><td>" + this.shows[showID].getstate() + "</td></tr>";
+show +="<tr><td>" + "ZIP: " + "</td><td>" + this.shows[showID].getzip() + "</td></tr>";
+show +="<tr><td>" + "Date: " + "</td><td>" + this.shows[showID].getdate() + "</td></tr>";
+show +="<tr><td>" + "Time: " + "</td><td>" + this.shows[showID].gettime() + "</td></tr>";
+show +="<tr><td>" + "Price: " + "</td><td>" + this.shows[showID].getprice() + "</td></tr>";
+show +="<tr><td>" + "Phone: " + "</td><td>" + this.shows[showID].getphone() + "</td></tr>";
+show +="<tr><td>" + "Website: " + "</td><td>" + this.shows[showID].getsite() + "</td></tr>";
+show +="<tr><td>" + "Featuring: " + "</td><td>" +  this.shows[showID].getfeat() + "</td></tr>";
+show += "</table> <hr>";
 }
 else
 {
@@ -211,18 +173,40 @@ show = "Invalid show."
 }
 return show;
 }
+
+tour.prototype.getshows = function()
+{
+var bookingHTML = "";
+for (booking in this.shows)
+{
+bookingHTML += "<table border = 1> <h3> Show #" + this.shows[booking].getshowID() + "<h3>";
+bookingHTML += "<tr><td>" + "Venue: " + "</td><td>" + this.shows[booking].getvenue() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Address: " + "</td><td>" + this.shows[booking].getadd() + "</td></tr>";
+bookingHTML +="<tr><td>" + "City: " + "</td><td>" + this.shows[booking].getcity() + "</td></tr>";
+bookingHTML +="<tr><td>" + "State: " + "</td><td>" + this.shows[booking].getstate() + "</td></tr>";
+bookingHTML +="<tr><td>" + "ZIP: " + "</td><td>" + this.shows[booking].getzip() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Date: " + "</td><td>" + this.shows[booking].getdate() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Time: " + "</td><td>" + this.shows[booking].gettime() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Price: " + "</td><td>" + this.shows[booking].getprice() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Phone: " + "</td><td>" + this.shows[booking].getphone() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Website: " + "</td><td>" + this.shows[booking].getsite() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Featuring: " + "</td><td>" +  this.shows[booking].getfeat() + "</td></tr>";
+bookingHTML += "</table> <hr>";
+}
+return bookingHTML;
+}
 //End Object / Method Setup
 
 //Begin User Interface
 
 //Sample Data - Added using created objects
 var tours = new tour();
-tours.addshow(0, "Rocketown", "100 Demonbreun Street", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "N/A", "Pearl Jam");
-tours.addshow(1, "venue2", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
+tours.addshow(0, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
+tours.addshow(1, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "10/10/19", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
 	
 //Example using created objects/method
-document.write(tours.getshow(prompt("Which event?","")));
-
+//document.write(tours.getshow(prompt("Which event?","")));
+document.write(tours.getshows());
 
 </script>
 </body>
