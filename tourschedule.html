@@ -207,6 +207,13 @@ tour.prototype.nextshowid = function()
 	}
 return c;
 }
+
+//Delete tour stop
+tour.prototype.deleteshow = function(showID)
+{
+delete tours.shows[showID];
+alert("Tour ID" + showID + " has been deleted.");
+}
 //End Object / Method Setup
 //________________________________________________________________________________________________________
 </script>
@@ -219,7 +226,7 @@ return c;
 var tours = new tour();
 tours.addshow(1, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
 tours.addshow(2, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "10/10/19", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
-	
+
 //Prompt Array
 var prompts = new Array();
 prompts[0] = new Array("Venue: ", "Address: ", "City: ", "State: ", "ZIP: ", "Date: ", "Time: ", "Price: ", "Phone: ", "Website: ", "Featuring: ");
@@ -231,31 +238,58 @@ response[0] = new Array();
 var i;
 var showID;
 //Flag for completed form.
-var submit = "incomplete";
+var submit = 1;
+//Pointer for main loop.
+var decision;  // Pointer
+var cont = 1;  // Exit Flag
 
-//For Loop for Data Collection
-for (i=0; i < prompts[0].length; i++)
+//User Interface	
+	
+while (cont == 1)
 {
+decision = prompt("Welcome to Tour Manager.  What would you like to do? \n 1. New Tour Stop \n 2. Delete Tour Stop \n 3. View Tour Schedule","");
+switch (decision)
+{
+	case "1":
+//For Loop for Data Collection
+		for (i=0; i < prompts[0].length; i++)
+		{
 	capt = prompt(prompts[0][i],"");
 		if (capt == "quit") 
 		{
-		submit = "complete";
+		submit = 0;
 		break;
 		}
 		else 
 		{
 				response[0][i] = capt;			// If not quit, save to array.
 		}
-showID = tours.nextshowid();
-//alert(response[0][0]);
 }
-	
 //Don't submit partially entered form.
+		if ( submit == 1)
+		{
+//Submit to Tour Schedule
+showID = tours.nextshowid();
 tours.addshow(showID,response[0][0],response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7],response[0][8],response[0][9],response[0][10]);
-	
+}
+		break;
+	case "2":
+		tours.deleteshow(prompt("Which show ID would you like to delete?",""));
+		break;
+	case "3":
 //Example using created objects/method
 //document.write(tours.getshow(prompt("Which event?","")));
-document.write(tours.getshows());
+		document.write(tours.getshows());
+		cont = 0;
+		break;
+	case "4":
+		cont = 0;
+		break;
+ 	default:
+		alert("Invalid Response.");
+		break;
+}
+}
 </script>
 </body>
 </html>
