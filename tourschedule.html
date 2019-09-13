@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<!-- Object/Method Setup -->
 <script language="javascript">
 //--------------------------------------------------
 function UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat)
@@ -173,7 +174,7 @@ show = "Invalid show."
 }
 return show;
 }
-
+//Method to display all shows on browser.
 tour.prototype.getshows = function()
 {
 var bookingHTML = "";
@@ -195,19 +196,66 @@ bookingHTML += "</table> <hr>";
 }
 return bookingHTML;
 }
+
+//Auto index for next showid
+tour.prototype.nextshowid = function()
+{
+	var c= 1;
+	for (c in this.shows)
+	{
+	c++
+	}
+return c;
+}
 //End Object / Method Setup
+//________________________________________________________________________________________________________
+</script>
 
+<!-- User Interface -->
+<script>
+//________________________________________________________________________________________________________
 //Begin User Interface
-
 //Sample Data - Added using created objects
 var tours = new tour();
-tours.addshow(0, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
-tours.addshow(1, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "10/10/19", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
+tours.addshow(1, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "11/5/19", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
+tours.addshow(2, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "10/10/19", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
+	
+//Prompt Array
+var prompts = new Array();
+prompts[0] = new Array("Venue: ", "Address: ", "City: ", "State: ", "ZIP: ", "Date: ", "Time: ", "Price: ", "Phone: ", "Website: ", "Featuring: ");
+//Response Array
+var response = new Array();
+response[0] = new Array();
+	
+//For Loop Counters
+var i;
+var showID;
+//Flag for completed form.
+var submit = "incomplete";
+
+//For Loop for Data Collection
+for (i=0; i < prompts[0].length; i++)
+{
+	capt = prompt(prompts[0][i],"");
+		if (capt == "quit") 
+		{
+		submit = "complete";
+		break;
+		}
+		else 
+		{
+				response[0][i] = capt;			// If not quit, save to array.
+		}
+showID = tours.nextshowid();
+//alert(response[0][0]);
+}
+	
+//Don't submit partially entered form.
+tours.addshow(showID,response[0][0],response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7],response[0][8],response[0][9],response[0][10]);
 	
 //Example using created objects/method
 //document.write(tours.getshow(prompt("Which event?","")));
 document.write(tours.getshows());
-
 </script>
 </body>
 </html>
