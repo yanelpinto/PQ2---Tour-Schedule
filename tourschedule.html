@@ -217,13 +217,10 @@ alert("Tour ID" + showID + " has been deleted.");
 
 tour.prototype.sortshows = function()
 {
-	var sorted = new tour();
-	
-	sorted = this.shows.sort(function(a,b)
+	const sorted = this.shows.sort(function(a,b)
 	{
 	return a.date - b.date;
 	});
-	alert(sorted[0][0]);
 return sorted
 }
 
@@ -292,10 +289,6 @@ tours.addshow(showID,response[0][0],response[0][1],response[0][2],response[0][3]
 	case "3":
 //Example using created objects/method
 //document.write(tours.getshow(prompt("Which event?","")));
-		const sorted = tours.shows.sort(function(a,b)
-	{
-	return a.date - b.date;
-	});
 		document.write(tours.getshows());
 		cont = 0;
 		break;
