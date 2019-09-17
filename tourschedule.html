@@ -7,11 +7,10 @@
 
 </head>
 <body>
+<!-- Object/Method Setup -->
 <script language="javascript">
-
-
-
-function UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, with)
+//--------------------------------------------------
+function UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat)
 {
 this.showID = showID;
 this.venue = venue;
@@ -24,11 +23,10 @@ this.time = time;
 this.price = price;
 this.phone = phone;
 this.site = site;
-this.with = with;
+this.feat = feat;
 }
-
 //showID Method Setup
-UserEntry.prototype.getshowID = function(showID)
+UserEntry.prototype.getshowID = function()
 {
 return this.showID;
 }
@@ -36,9 +34,8 @@ UserEntry.prototype.setshowID = function(showID)
 {
 this.showID = showID;
 }
-
 //venue Method Setup
-UserEntry.prototype.getvenue = function(venue)
+UserEntry.prototype.getvenue = function()
 {
 return this.venue;
 }
@@ -46,9 +43,8 @@ UserEntry.prototype.setvenue = function(venue)
 {
 this.venue = venue;
 }
-
 //add Method Setup
-UserEntry.prototype.getadd = function(add)
+UserEntry.prototype.getadd = function()
 {
 return this.add;
 }
@@ -56,9 +52,8 @@ UserEntry.prototype.setadd = function(add)
 {
 this.add = add;
 }
-
 //city Method Setup
-UserEntry.prototype.getcity = function(city)
+UserEntry.prototype.getcity = function()
 {
 return this.city;
 }
@@ -66,9 +61,8 @@ UserEntry.prototype.setcity = function(city)
 {
 this.city = city;
 }
-
 //state Method Setup
-UserEntry.prototype.getstate = function(state)
+UserEntry.prototype.getstate = function()
 {
 return this.state;
 }
@@ -76,9 +70,8 @@ UserEntry.prototype.setstate = function(state)
 {
 this.state = state;
 }
-
 //zip Method Setup
-UserEntry.prototype.getzip = function(zip)
+UserEntry.prototype.getzip = function()
 {
 return this.zip;
 }
@@ -86,9 +79,8 @@ UserEntry.prototype.setzip = function(zip)
 {
 this.zip = zip;
 }
-
 //date Method Setup
-UserEntry.prototype.getdate = function(date)
+UserEntry.prototype.getdate = function()
 {
 return this.date;
 }
@@ -96,9 +88,8 @@ UserEntry.prototype.setdate = function(date)
 {
 this.date = date;
 }
-
 //time Method Setup
-UserEntry.prototype.gettime = function(time)
+UserEntry.prototype.gettime = function()
 {
 return this.time;
 }
@@ -106,9 +97,8 @@ UserEntry.prototype.settime = function(time)
 {
 this.time = time;
 }
-
 //price Method Setup
-UserEntry.prototype.getprice = function(price)
+UserEntry.prototype.getprice = function()
 {
 return this.price;
 }
@@ -116,9 +106,8 @@ UserEntry.prototype.setprice = function(price)
 {
 this.price = price;
 }
-
 //phone Method Setup
-UserEntry.prototype.getphone = function(phone)
+UserEntry.prototype.getphone = function()
 {
 return this.phone;
 }
@@ -126,9 +115,8 @@ UserEntry.prototype.setphone = function(phone)
 {
 this.phone = phone;
 }
-
 //site Method Setup
-UserEntry.prototype.getsite = function(site)
+UserEntry.prototype.getsite = function()
 {
 return this.site;
 }
@@ -136,20 +124,17 @@ UserEntry.prototype.setsite = function(site)
 {
 this.site = site;
 }
-
-//with Method Setup
-UserEntry.prototype.getwith = function(with)
+//feat Method Setup
+UserEntry.prototype.getfeat = function()
 {
-return this.with;
+return this.feat;
 }
-UserEntry.prototype.setwith = function(with)
+UserEntry.prototype.setfeat = function(feat)
 {
-this.with = with;
+this.feat = feat;
 }
-
-var show1 = new UserEntry(
-
-
+//--------------------------------------------------
+var show1 = new UserEntry("showID", "venue", "add", "city", "state", "zip", "date", "time", "price", "phone", "site", "feat");
 //Object - Tour - Array of all events.
 //Object definition
 function tour()
@@ -157,15 +142,164 @@ function tour()
 this.shows = new Array();
 }
 //Method definition - Add show from UserEntry object
-cinema.prototype.addshow = function(showID, venue, add, city, state, zip, date, time, price, phone, site, with);
+tour.prototype.addshow = function(showID, venue, add, city, state, zip, date, time, price, phone, site, feat)
 {
-this.shows[showID] = new UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, with);
+this.shows[showID] = new UserEntry(showID, venue, add, city, state, zip, date, time, price, phone, site, feat);
 }
-document.write("Hello World 2")
+//Method definition - To output single event data to screen.
+tour.prototype.getshow = function(showID)
+{
+//Error Handling for non-existant value
+if (typeof this.shows[showID] !== 'undefined')
+{
+var show;
+show = "<h3> Show #" + this.shows[showID].getshowID() + "<h3>";
+show += "<table border = 1>";
+show += "<tr><td>" + "Venue: " + "</td><td>" + this.shows[showID].getvenue() + "</td></tr>";
+show +="<tr><td>" + "Address: " + "</td><td>" + this.shows[showID].getadd() + "</td></tr>";
+show +="<tr><td>" + "City: " + "</td><td>" + this.shows[showID].getcity() + "</td></tr>";
+show +="<tr><td>" + "State: " + "</td><td>" + this.shows[showID].getstate() + "</td></tr>";
+show +="<tr><td>" + "ZIP: " + "</td><td>" + this.shows[showID].getzip() + "</td></tr>";
+show +="<tr><td>" + "Date: " + "</td><td>" + this.shows[showID].getdate() + "</td></tr>";
+show +="<tr><td>" + "Time: " + "</td><td>" + this.shows[showID].gettime() + "</td></tr>";
+show +="<tr><td>" + "Price: " + "</td><td>" + this.shows[showID].getprice() + "</td></tr>";
+show +="<tr><td>" + "Phone: " + "</td><td>" + this.shows[showID].getphone() + "</td></tr>";
+show +="<tr><td>" + "Website: " + "</td><td>" + this.shows[showID].getsite() + "</td></tr>";
+show +="<tr><td>" + "Featuring: " + "</td><td>" +  this.shows[showID].getfeat() + "</td></tr>";
+show += "</table> <hr>";
+}
+else
+{
+show = "Invalid show."
+}
+return show;
+}
+//Method to display all shows on browser.
+tour.prototype.getshows = function()
+{
+var bookingHTML = "";
+for (booking in this.shows)
+{
+bookingHTML += "<table border = 1> <h3> Show #" + this.shows[booking].getshowID() + "<h3>";
+bookingHTML += "<tr><td>" + "Venue: " + "</td><td>" + this.shows[booking].getvenue() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Address: " + "</td><td>" + this.shows[booking].getadd() + "</td></tr>";
+bookingHTML +="<tr><td>" + "City: " + "</td><td>" + this.shows[booking].getcity() + "</td></tr>";
+bookingHTML +="<tr><td>" + "State: " + "</td><td>" + this.shows[booking].getstate() + "</td></tr>";
+bookingHTML +="<tr><td>" + "ZIP: " + "</td><td>" + this.shows[booking].getzip() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Date: " + "</td><td>" + this.shows[booking].getdate() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Time: " + "</td><td>" + this.shows[booking].gettime() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Price: " + "</td><td>" + this.shows[booking].getprice() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Phone: " + "</td><td>" + this.shows[booking].getphone() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Website: " + "</td><td>" + this.shows[booking].getsite() + "</td></tr>";
+bookingHTML +="<tr><td>" + "Featuring: " + "</td><td>" +  this.shows[booking].getfeat() + "</td></tr>";
+bookingHTML += "</table> <hr>";
+}
+return bookingHTML;
+}
+
+//Auto index for next showid
+tour.prototype.nextshowid = function()
+{
+	var c= 1;
+	for (c in this.shows)
+	{
+	c++
+	}
+return c;
+}
+
+//Delete tour stop
+tour.prototype.deleteshow = function(showID)
+{
+delete this.shows[showID];
+alert("Tour ID" + showID + " has been deleted.");
+}
+
+tour.prototype.sortshows = function()
+{
+	const sorted = this.shows.sort(function(a,b)
+	{
+	return a.date - b.date;
+	});
+return sorted
+}
+
+//End Object / Method Setup
+//________________________________________________________________________________________________________
 </script>
 
+<!-- User Interface -->
+<script>
+//________________________________________________________________________________________________________
+//Begin User Interface
+//Sample Data - Added using created objects
+var tours = new tour();
+tours.addshow(1, "Rocketown", "401 6th Avenue South", "Nashville", "TN", "37203", "2019-11-15", "9:00 PM", "$15.00", "(615) 901-6525", "www.rocketown.com", "Pearl Jam");
+tours.addshow(2, "Plaza Mariachi", "3955 Nolensville Pike", "Nashville", "TN", "37211", "2019-10-10", "11:00 PM", "$10.00", "(615) 373-9292", "www.plazamariachi.com", "Chino y Nacho");
 
+//Prompt Array
+var prompts = new Array();
+prompts[0] = new Array("Venue: ", "Address: ", "City: ", "State: ", "ZIP: ", "Date: ", "Time: ", "Price: ", "Phone: ", "Website: ", "Featuring: ");
+//Response Array
+var response = new Array();
+response[0] = new Array();
+	
+//For Loop Counters
+var i;
+var showID;
+//Flag for completed form.
+var submit = 1;
+//Pointer for main loop.
+var decision;  // Pointer
+var cont = 1;  // Exit Flag
 
-
+//User Interface	
+	
+while (cont == 1)
+{
+decision = prompt("Welcome to Tour Manager.  What would you like to do? \n 1. New Tour Stop \n 2. Delete Tour Stop \n 3. View Tour Schedule \n 4. Exit","");
+switch (decision)
+{
+	case "1":
+//For Loop for Data Collection
+		for (i=0; i < prompts[0].length; i++)
+		{
+	capt = prompt(prompts[0][i],"");
+		if (capt == "quit") 
+		{
+		submit = 0;
+		break;
+		}
+		else 
+		{
+				response[0][i] = capt;			// If not quit, save to array.
+		}
+}
+//Don't submit partially entered form.
+		if ( submit == 1)
+		{
+//Submit to Tour Schedule
+showID = tours.nextshowid();
+tours.addshow(showID,response[0][0],response[0][1],response[0][2],response[0][3],response[0][4],response[0][5],response[0][6],response[0][7],response[0][8],response[0][9],response[0][10]);
+}
+		break;
+	case "2":
+		tours.deleteshow(prompt("Which show ID would you like to delete?",""));
+		break;
+	case "3":
+//Example using created objects/method
+//document.write(tours.getshow(prompt("Which event?","")));
+		document.write(tours.getshows());
+		cont = 0;
+		break;
+	case "4":
+		cont = 0;
+		break;
+ 	default:
+		alert("Invalid Response.");
+		break;
+}
+}
+</script>
 </body>
 </html>
